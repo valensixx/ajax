@@ -9,8 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 </head>
 <body>
-
-    
+    <!--
+        Create json data by city and country with that format:
+        countries:[{name: "Bulgaria",cities:[{name:"Plovdiv","Stara Zagora"}]}] 
+        With 2 selects - first with drop down menu with data list. Second one with cityes
+        After the country is changed with another the city must change too in the second dropdown menu.
+        By click button the data must be send with ajax to the placeholder.
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <label for="">Select countriy</label>
+                <select name="" id="countries" class="form-control"></select>
+            </div>
+            <div class="col-4">
+                <label for="">Select city</label>
+                <select name="" id="city" class="form-control"></select>
+            </div>
+            <div class="col-4">
+                <br/>
+                <button id="send" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 </body>
