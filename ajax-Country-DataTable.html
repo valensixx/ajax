@@ -34,5 +34,69 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script>
+        const countries = [
+            {
+                name:"Bulgaria",
+                cities:[
+                    "Plovdiv", "Sofia", "Stara Zagora"
+                ]
+            },
+
+            {
+                name: "USA",
+                cities:[
+                    "New York", "Manhatan", "Chicago"
+                ]
+            },
+        ];
+
+        function load(){
+            let html = '<option>Select</option>';
+            countries.forEach(function(value){
+                html += `<option>${value.name}</option>`;
+            });
+
+            $('#countries').html(html);
+        }
+
+        $(function(){
+            load();
+
+            $('#countries').change(function(){
+                let selCountry = $(this).val();
+                let country = countries.find(function(country){
+                    return country.name == selCountry;
+                });
+
+                if(country === undefined){
+                    $('#city').html('');
+                    return;
+                }
+                
+                let html = '<option>Select</option>';
+                country.cities.forEach(city => {
+                    html += `<option>${city}</option>`;
+                });
+
+                $('#city').html(html); 
+            });
+
+            $('#send').click(function(){
+                let country = $('#countries').val();
+                let city = $('#cities').val();
+
+                $.ajax({
+                    url:'https://jsonplaceholder.typicode.com/posts',
+                    type: 'POST',
+                    data: {country: country, city: city},
+                    success: function(){
+                        console.log('send succesfill!');
+                    }
+
+                });
+            });
+        });
+    </script>
 </body>
 </html>
